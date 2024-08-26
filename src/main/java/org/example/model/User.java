@@ -6,7 +6,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GeneratedValue.AUTO)
     private int id;
+
     private String sessionId;
+
+//    @NotBlank
     private String name;
 
     public int getId() {

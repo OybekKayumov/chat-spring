@@ -1,6 +1,10 @@
 package org.example;
 
+import org.example.model.User;
+import org.example.model.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,6 +12,13 @@ import java.util.Map;
 
 @RestController
 public class ChatController {
+
+    @Autowired
+    private final UserRepository userRepository;
+
+    public ChatController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @GetMapping("/init")
     public HashMap<String, Boolean> init() {
@@ -22,11 +33,20 @@ public class ChatController {
     }
 
     @PostMapping("/auth")
-    public HashMap<String, Boolean> auth(@RequestParam String name) {
+    public HashMap<String, Boolean> auth(
+//            @Valid
+            @RequestParam String name) {
 
+        HashMap<String, Boolean> response = new HashMap<>();
         //todo: create user with name, sessionId
         // save User to DB
-        HashMap<String, Boolean> response = new HashMap<>();
+        String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
+        User user = new User();
+        user.setName(name);
+        user.setSessionId(sessionId);
+
+        userRepository.save(user);
+
         response.put("result", true);
         return response;
     }
