@@ -4,23 +4,38 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ChatController {
 
     @GetMapping("/init")
-    public Boolean init() {
+    public HashMap<String, Boolean> init() {
 
-        //todo: check sessionId, if found -> true
 //        return "Yes";
-        return true;
+        //todo: check sessionId, if found -> true
+        HashMap<String, Boolean> response = new HashMap<>();
+
+        response.put("result", true);
+        return response;
 
     }
 
-    @PostMapping("/message")
-    public Boolean sendMessage(@RequestParam String message) {
+    @PostMapping("/auth")
+    public HashMap<String, Boolean> auth(@RequestParam String name) {
 
-        return true;
+        //todo: create user with name, sessionId
+        // save User to DB
+
+        HashMap<String, Boolean> response = new HashMap<>();
+        response.put("result", true);
+        return response;
+    }
+
+    @PostMapping("/message")
+    public Map<String, Boolean> sendMessage(@RequestParam String message) {
+
+        return Map.of("result", true);
     }
 
     @GetMapping("/message")
