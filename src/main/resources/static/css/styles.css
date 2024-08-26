@@ -1,5 +1,5 @@
 .messages-and-users {
-    display: flex;
+    display: none;
     margin-bottom: 30px;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .conrolas {
-    display: flex;
+    display: none;
 }
 
 .new-message {

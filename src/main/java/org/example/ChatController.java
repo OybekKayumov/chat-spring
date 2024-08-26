@@ -26,7 +26,6 @@ public class ChatController {
 
         //todo: create user with name, sessionId
         // save User to DB
-
         HashMap<String, Boolean> response = new HashMap<>();
         response.put("result", true);
         return response;
