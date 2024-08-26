@@ -21,25 +21,21 @@ public class ChatController {
     }
 
     @GetMapping("/init")
-    public HashMap<String, Boolean> init() {
-
-//        return "Yes";
-        //todo: check sessionId, if found -> true
-        HashMap<String, Boolean> response = new HashMap<>();
-
-        response.put("result", true);
-        return response;
+//    public HashMap<String, Boolean> init() {
+    public String init() {
+//        HashMap<String, Boolean> response = new HashMap<>();
+//
+//        response.put("result", true);
+//        return response;
+        return "yes";
 
     }
 
     @PostMapping("/auth")
-    public HashMap<String, Boolean> auth(
-//            @Valid
-            @RequestParam String name) {
+    public HashMap<String, Boolean> auth(@RequestParam String name) {
 
         HashMap<String, Boolean> response = new HashMap<>();
-        //todo: create user with name, sessionId
-        // save User to DB
+
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
         User user = new User();
         user.setName(name);

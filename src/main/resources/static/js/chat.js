@@ -1,5 +1,5 @@
 $(function() {
-//    alert("Hello!");
+   // alert("Hello!");
 
     let initApplication = function() {
         $('.messages-and-users').css({display: 'flex'});
@@ -8,14 +8,12 @@ $(function() {
     }
 
     let registerUser = function() {
-        $.post('/auth', {name: name}, function(response) ){
+        $.post('/auth', {name: name}, function(response) {
             if(response.result) {
                 initApplication();
-            } else {
-
             }
 
-        }
+        })
     }
 
 
