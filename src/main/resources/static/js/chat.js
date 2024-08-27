@@ -1,10 +1,26 @@
 $(function() {
    // alert("Hello!");
+    let updateMessages = function() {
+        $.get('/message', {}, function(response) {
+            for
+        })
+    }
 
     let initApplication = function() {
         $('.messages-and-users').css({display: 'flex'});
         $('.controls').css({display: 'flex'});
-        //todo init events
+
+        $('.send-message').on('click', function() {
+            let message = $('.new-message').val();
+            $.post('/message', {message: message}, function(response) {
+
+                if(response.reult) {
+                    $('.new-message').val('')
+                } else {
+                    alert('Error: (Try later)');
+                }
+            });
+        })
     }
 
     let registerUser = function() {
